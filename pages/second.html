@@ -14,6 +14,6 @@
 <div class="row">
 <div ng-repeat="w in weatherResult.list" class="col-md-12" data-ng-class="{ 'col-md-6': days > maxDays }">
 
-         <search-result></search-result>
+         <search-result weather-object="w" convert-fahrenheit="convertToFahrenheit(temp)" convert-celsius="convertToCelsius(temp)" convert-date="convertToDate(dt)" date-format='EEEE, d. MMM'></search-result>
     </div>
 </div>
