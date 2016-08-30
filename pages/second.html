@@ -1,0 +1,29 @@
+<h1>Forecast for {{ city }}</h1>
+<div class="panel panel-default">
+<p class="btn" ng-click="celsius=false;fahrenheit=false">Celsius</p>
+<p class="btn" ng-click="fahrenheit=true;celsius=true">Fahrenheit</p>
+</div>
+
+<div ng-repeat="w in weatherResult.list">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>{{ convertToDate(w.dt) | date: 'd. MMM, EEE // yy'}}</h4>
+                    <a class="btn btn-info" ng-click="night=true">Night</a></div>
+                </div>
+                <div class="panel-body">
+                    Daytime temperature:
+                    <span ng-hide="celsius">{{ convertToCelsius(w.temp.day) }}</span>
+                    <span ng-show="fahrenheit">{{ convertToFahrenheit(w.temp.day) }}</span>
+                    </div>
+                <div class="panel-footer" ng-show="night">
+                    Nighttime temperature:
+                    <span ng-hide="celsius">{{ convertToCelsius(w.temp.night) }}</span>
+                    <span ng-show="fahrenheit">{{ convertToFahrenheit(w.temp.night) }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
