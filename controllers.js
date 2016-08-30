@@ -14,19 +14,14 @@ weatherForecastApp.controller('mainController', ['$scope', 'binderService', '$lo
     }
 }]);
 
-weatherForecastApp.controller('secondController', ['$scope', '$resource', 'binderService', '$routeParams', '$log', function ($scope, $resource, binderService, $routeParams, $log) {
+weatherForecastApp.controller('secondController', ['$scope', 'binderService', '$routeParams', '$log', 'weatherService', function ($scope, binderService, $routeParams, $log, weatherService) {
 
     //API configuration
     $scope.city = binderService.city;
     $scope.days = $routeParams.days || binderService.dayCount;
     $scope.maxDays = 6; //max number of days when forecast are shown in one row
 
-    $scope.weatherAPI =
-        $resource('http://api.openweathermap.org/data/2.5/forecast/daily', {
-            callback: "JSON_CALLBACK"
-        }, {get: {method: "JSONP"}});
-
-    $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.city, cnt: $scope.days, appId: '1be079e4d2e906ac71313a709c15b59f' });
+    $scope.weatherResult = weatherService.GetWeather($scope.city, $scope.days);
 
     //Display functions
     $scope.convertToFahrenheit = function (degK) {
