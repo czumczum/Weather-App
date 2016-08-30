@@ -34,9 +34,10 @@ weatherForecastApp.controller('mainController', ['$scope', 'binderService', func
 
 weatherForecastApp.controller('secondController', ['$scope', '$resource', 'binderService', '$routeParams', '$log', function ($scope, $resource, binderService, $routeParams, $log) {
 
-//API configuration
+    //API configuration
     $scope.city = binderService.city;
     $scope.days = $routeParams.days || binderService.dayCount;
+    $scope.maxDays = 6; //max number of days when forecast are shown in one row
 
     $scope.weatherAPI =
         $resource('http://api.openweathermap.org/data/2.5/forecast/daily', {
@@ -45,7 +46,7 @@ weatherForecastApp.controller('secondController', ['$scope', '$resource', 'binde
 
     $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.city, cnt: $scope.days, appId: '1be079e4d2e906ac71313a709c15b59f' });
 
-//Display functions
+    //Display functions
     $scope.convertToFahrenheit = function (degK) {
         return Math.round((1.8 * (degK - 273)) + 32);
     };
@@ -62,4 +63,14 @@ weatherForecastApp.controller('secondController', ['$scope', '$resource', 'binde
 weatherForecastApp.service('binderService', function() {
     this.city = 'Tychy, Silesia';
     this.dayCount = 3;
+});
+
+weatherForecastApp.directive('searchResult', function () {
+    return {
+        templateUrl: 'directives/searchresult.html',
+    link: function(scope, elems, attrs) {
+        console.log(elems);
+        console.log(attrs);
+        return
+    }}
 });

@@ -1,35 +1,19 @@
-<h1>Forecast for {{ city }}</h1>
+<h1>Forecast for {{ city }} for {{ days }} days</h1>
 <div class="panel panel-default">
 <p class="btn" ng-click="celsius=false;fahrenheit=false">Celsius</p>
 <p class="btn" ng-click="fahrenheit=true;celsius=true">Fahrenheit</p>
     <span>Days:</span>
     <span class="btn-group" role="group" aria-label="days">
-        <a href="#/second/2" type="button" class="btn btn-default">2</a>
-        <a href="#/second/5" type="button" class="btn btn-default">5</a>
-        <a href="#/second/7" type="button" class="btn btn-default">7</a>
+        <a href="#/second/2" type="button" class="btn btn-default" data-ng-class="{ 'btn-primary': days === '2' }">2</a>
+        <a href="#/second/5" type="button" class="btn btn-default" data-ng-class="{ 'btn-primary': days === '5' }">5</a>
+        <a href="#/second/7" type="button" class="btn btn-default" data-ng-class="{ 'btn-primary': days === '7' }">7</a>
+        <a href="#/second/14" type="button" class="btn btn-default" data-ng-class="{ 'btn-primary': days === '14' }">14</a>
+
     </span>
 </div>
+<div class="row">
+<div ng-repeat="w in weatherResult.list" class="col-md-12" data-ng-class="{ 'col-md-6': days > maxDays }">
 
-<div ng-repeat="w in weatherResult.list">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        <h4>{{ convertToDate(w.dt) | date: 'd. MMM, EEE // yy'}}</h4>
-                    <a class="btn btn-info" ng-click="night=true">Night</a></div>
-                </div>
-                <div class="panel-body">
-                    Daytime temperature:
-                    <span ng-hide="celsius">{{ convertToCelsius(w.temp.day) }}</span>
-                    <span ng-show="fahrenheit">{{ convertToFahrenheit(w.temp.day) }}</span>
-                    </div>
-                <div class="panel-footer" ng-show="night">
-                    At night:
-                    <span ng-hide="celsius">{{ convertToCelsius(w.temp.night) }}</span>
-                    <span ng-show="fahrenheit">{{ convertToFahrenheit(w.temp.night) }}</span>
-                </div>
-            </div>
-        </div>
+         <search-result></search-result>
     </div>
 </div>

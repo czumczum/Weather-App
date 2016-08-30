@@ -1,0 +1,17 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <h4>{{ convertToDate(w.dt) | date: 'd. MMM, EEE // yy'}}</h4>
+            <a class="btn btn-info" ng-click="night=true">Night</a></div>
+    </div>
+    <div class="panel-body">
+        Daytime temperature:
+        <span ng-hide="celsius">{{ convertToCelsius(w.temp.day) }}</span>
+        <span ng-show="fahrenheit">{{ convertToFahrenheit(w.temp.day) }}</span>
+    </div>
+    <div class="panel-footer" ng-show="night">
+        At night:
+        <span ng-hide="celsius">{{ convertToCelsius(w.temp.night) }}</span>
+        <span ng-show="fahrenheit">{{ convertToFahrenheit(w.temp.night) }}</span>
+    </div>
+</div>
