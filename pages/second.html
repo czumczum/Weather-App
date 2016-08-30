@@ -2,6 +2,12 @@
 <div class="panel panel-default">
 <p class="btn" ng-click="celsius=false;fahrenheit=false">Celsius</p>
 <p class="btn" ng-click="fahrenheit=true;celsius=true">Fahrenheit</p>
+    <span>Days:</span>
+    <span class="btn-group" role="group" aria-label="days">
+        <a href="#/second/2" type="button" class="btn btn-default">2</a>
+        <a href="#/second/5" type="button" class="btn btn-default">5</a>
+        <a href="#/second/7" type="button" class="btn btn-default">7</a>
+    </span>
 </div>
 
 <div ng-repeat="w in weatherResult.list">
@@ -19,7 +25,7 @@
                     <span ng-show="fahrenheit">{{ convertToFahrenheit(w.temp.day) }}</span>
                     </div>
                 <div class="panel-footer" ng-show="night">
-                    Nighttime temperature:
+                    At night:
                     <span ng-hide="celsius">{{ convertToCelsius(w.temp.night) }}</span>
                     <span ng-show="fahrenheit">{{ convertToFahrenheit(w.temp.night) }}</span>
                 </div>

@@ -1,3 +1,15 @@
+body {
+  background-size: inherit;
+  background: url('../img/DSC_1931.jpg') no-repeat;
+  width: 100%;
+}
+
+header {
+}
+.container {
+  background: rgba(255, 255, 255, 0.4);
+  padding-bottom: 15px;
+}
 h4 {
   display: inline-block;
   margin: 0;
@@ -5,4 +17,7 @@ h4 {
 a.btn-info {
   margin-left: 30px;
   color: #fff;
+}
+.panel-default {
+  padding: 5px;
 }
